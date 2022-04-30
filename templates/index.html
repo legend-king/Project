@@ -1,101 +1,200 @@
 <!DOCTYPE html>
-<html lang = "en" dir = "ltr">
-  <head>
-      <meta charset=" utf-8">
-    <title> Title </title>
-      <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>TITLE</title>
+  {% load static %}
+<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style>
+.back{
+ background-image:url({% static 'images/img.jpg' %});
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: 100% 100%;
+}
+.white{
+color:white;
+}
+.space{
+margin:10px 30px;
+padding:10px 10px;
+background: palegreen;
+width:500px
+}
+.gap{
+padding:10px 20px;
+}
+</style>
   
-  <body>
-    <div class='container'>
-        <h1  class="justify-center text-[34px] text-blue-500">Prediction of Phishing Network </h1>
-    </div>
+</head>
 
-    <div class="grid justify-center min-h-screen">
-    <form class="w-full max-w-lg" method="post" action="/">
+<body class="back">
+ <div>
+  <div class="jumbotron">
+  <h1 style="text-align:center">PREDICTION OF PHISHING NETWORK</h1>
+  
+  </div>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form class="form-group" action="/"method="post">
+      {% csrf_token %}
+        
+    <div class="row">
+    <div class="gap col-md-6 ">
+
+    <label class="white"  for="">Index</label>
+    <input type="number" class="space form-control" step="0.01" name="Index" placeholder="Index" required="required" /><br>
+    
+    
+
+    <label class="white" for="">LongURL</label>
+    <input type="number" class="space form-control" step="0.01" name="LongURL" placeholder="LongURL" required="required" /><br>
+
+    <label class="white" for="">Symbol@</label>
+    <input type="number" class="space form-control" step="0.01" name="Symbol@" placeholder="Symbol@" required="required" /><br>
+
+    <label class="white"  for="">PrefixSuffix-</label>
+    <input type="number" class="space form-control" step="0.01" name="PrefixSuffix-" placeholder="PrefixSuffix-" required="required" /><br>
+
+    <label class="white"  for="">HTTPS</label>
+    <input type="number" class="space form-control" step="0.01" name="HTTPS" placeholder="HTTPS" required="required" /><br>
+  </div>
+    
+
+
+
+<div class="gap col-md-6">
+    
+    <label class="white"  for="">UsingIP</label>
+    <input type="number" class="space form-control" step="0.01" name="UsingIP" placeholder="UsingIP" required="required" /><br>
+
+    <label class="white"  for="">ShortURL</label>
+    <input type="number" class="space form-control" step="0.01" name="ShortURL" placeholder="ShortURL" required="required" /><br>
+    
+    <label class="white"  for="">Redirecting//</label>
+    <input type="number" class="space form-control" step="0.01" name="Redirecting//" placeholder="Redirecting//" required="required" /><br>
+
+    <label class="white"  for="">SubDomains</label>
+    <input type="number" class="space form-control" step="0.01" name="SubDomains" placeholder="SubDomains" required="required" /><br>
+
+    <label class="white"  for="">DomainRegLen</label>
+    <input type="number" class="space form-control" step="0.01" name="DomainRegLen" placeholder="DomainRegLen" required="required" /><br>
+
+</div>
+</div>
+
+
+<div class="row">
+  <div class="gap col-md-6 ">
+
+  <label class="white"  for="">Favicon</label>
+  <input type="number" class="space form-control" step="0.01" name="Favicon" placeholder="Favicon" required="required" /><br>
+  
+  
+
+  <label class="white" for="">HTTPSDomainURL</label>
+  <input type="number" class="space form-control" step="0.01" name="HTTPSDomainURL" placeholder="HTTPSDomainURL" required="required" /><br>
+
+  <label class="white" for="">AnchorURL</label>
+  <input type="number" class="space form-control" step="0.01" name="AnchorURL" placeholder="AnchorURL" required="required" /><br>
+
+  <label class="white"  for="">ServerFormHandler</label>
+  <input type="number" class="space form-control" step="0.01" name="ServerFormHandler" placeholder="ServerFormHandler" required="required" /><br>
+
+  <label class="white"  for="">AbnormalURL</label>
+  <input type="number" class="space form-control" step="0.01" name="AbnormalURL" placeholder="AbnormalURL" required="required" /><br>
+</div>
+  
+
+
+
+<div class="gap col-md-6">
+  
+  <label class="white"  for="">NonStdPort</label>
+  <input type="number" class="space form-control" step="0.01" name="NonStdPort" placeholder="NonStdPort" required="required" /><br>
+
+  <label class="white"  for="">RequestURL</label>
+  <input type="number" class="space form-control" step="0.01" name="RequestURL" placeholder="RequestURL" required="required" /><br>
+  
+  <label class="white"  for="">LinksInScriptTags</label>
+  <input type="number" class="space form-control" step="0.01" name="LinksInScriptTags" placeholder="LinksInScriptTags" required="required" /><br>
+
+  <label class="white"  for="">InfoEmail</label>
+  <input type="number" class="space form-control" step="0.01" name="InfoEmail" placeholder="InfoEmail" required="required" /><br>
+
+  <label class="white"  for="">WebsiteForwarding</label>
+  <input type="number" class="space form-control" step="0.01" name="WebsiteForwarding" placeholder="WebsiteForwarding" required="required" /><br>
+
+</div>
+</div>
+
+
+<div class="row">
+  <div class="gap col-md-6 ">
+
+  <label class="white"  for="">StatusBarCust</label>
+  <input type="number" class="space form-control" step="0.01" name="StatusBarCust" placeholder="StatusBarCust" required="required" /><br>
+  
+  
+
+  <label class="white" for="">UsingPopupWindow</label>
+  <input type="number" class="space form-control" step="0.01" name="UsingPopupWindow" placeholder="UsingPopupWindow" required="required" /><br>
+
+  <label class="white" for="">AgeofDomain</label>
+  <input type="number" class="space form-control" step="0.01" name="AgeofDomain" placeholder="AgeofDomain" required="required" /><br>
+
+  <label class="white"  for="">WebsiteTraffic</label>
+  <input type="number" class="space form-control" step="0.01" name="WebsiteTraffic" placeholder="WebsiteTraffic" required="required" /><br>
+
+  <label class="white"  for="">GoogleIndex</label>
+  <input type="number" class="space form-control" step="0.01" name="GoogleIndex" placeholder="GoogleIndex" required="required" /><br>
+
+  <label class="white"  for="">StatsReport</label>
+  <input type="number" class="space form-control" step="0.01" name="StatsReport" placeholder="StatsReport" required="required" /><br>
+
+</div>
+  
+
+
+
+<div class="gap col-md-6">
+  
+  <label class="white"  for="">DisableRightClick</label>
+  <input type="number" class="space form-control" step="0.01" name="DisableRightClick" placeholder="DisableRightClick" required="required" /><br>
+
+  <label class="white"  for="">IframeRedirection</label>
+  <input type="number" class="space form-control" step="0.01" name="IframeRedirection" placeholder="IframeRedirection" required="required" /><br>
+  
+  <label class="white"  for="">DNSRecording</label>
+  <input type="number" class="space form-control" step="0.01" name="DNSRecording" placeholder="DNSRecording" required="required" /><br>
+
+  <label class="white"  for="">PageRank</label>
+  <input type="number" class="space form-control" step="0.01" name="PageRank" placeholder="PageRank" required="required" /><br>
+
+  <label class="white"  for="">LinksPointingToPage</label>
+  <input type="number" class="space form-control" step="0.01" name="LinksPointingToPage" placeholder="LinksPointingToPage" required="required" /><br>
+
+</div>
+</div>
+
+<div style="padding:2% 35%">
+  <button type="submit" class="btn btn-success btn-block" style="width:350px;padding:20px">Predict</button>   
+</div>
       
+    </form>
 
-        {% csrf_token %}
+   <br>
+   <br>
+<div  style="background:skyblue;padding:2% 40%">
+   {{ prediction_text }}
+</div>
+ </div>
 
-      <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-            SFH
-          </label>
-          <input name="sfh" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="SFH">
-        </div>
-        <div class="w-full md:w-1/2 px-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-            Web_traffic
-          </label>
-          <input name="web_traffic" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="web_traffic">
-        </div>
-      </div>
+ <h1 class="white">Accuarcy : {{data}}</h1>
 
-
-
-      <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-            popupwindow
-          </label>
-          <input name="popupwindow" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="popupwindow">
-         
-        </div>
-        <div class="w-full md:w-1/2 px-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-            url_length
-          </label>
-          <input name="url_length" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="url_length">
-        </div>
-      </div>
-
-
-      <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-            Ssl_finalstate
-          </label>
-          <input name="ssl_finalstate" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Ssl_finalstate">
-        </div>
-        <div class="w-full md:w-1/2 px-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-            Age of Domain
-          </label>
-          <input name="ageofdomain" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Age of Domain">
-        </div>
-      </div>
-
-
-      <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-            Request url
-          </label>
-          <input name="request_url" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Request url">
-        </div>
-        <div class="w-full md:w-1/2 px-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-            Having IP Address
-          </label>
-          <input name="having_ip_address" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Having IP address">
-        </div>
-      </div>
-
-      <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-            Url of Anchor
-          </label>
-          <input name="url_of_anchor" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Url of Anchor">
-        </div>
-      </div>
-
-      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" type="submit">
-        Predict
-      </button>
-      </form>
-
-    </div>
 </body>
 </html>
